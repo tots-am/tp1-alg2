@@ -1,0 +1,2 @@
+data/raw/20261001_atividade_economica.csv filter=lfs diff=lfs merge=lfs -text
+data/roads/bh.graphml filter=lfs diff=lfs merge=lfs -text

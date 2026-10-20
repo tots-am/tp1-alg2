@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>TP1 ALG2</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <header class="page-header">
+      <h1>TP1 ALG2</h1>
+      <p>Busca local de entregadores próximos a restaurantes e bares de BH</p>
+    </header>
+
+    <main class="layout">
+      <section class="controls panel" aria-label="Busca e simulação">
+        <h2>Busca e simulação</h2>
+
+        <label for="courier-count">Quantidade de entregadores</label>
+        <input id="courier-count" type="number" min="1" max="5000" step="100" value="500">
+        <button id="generate-button" class="primary-button" type="button">Gerar nova frota</button>
+
+        <div class="divider"></div>
+
+        <label for="restaurant-query">Restaurante, rua ou bairro</label>
+        <input id="restaurant-query" type="search" autocomplete="off" placeholder="Digite pelo menos 2 caracteres">
+        <select id="restaurant-options" size="3" aria-label="Estabelecimentos encontrados"></select>
+
+        <div class="radius-row">
+          <label for="radius">Raio (km)</label>
+          <input id="radius" type="number" min="0.2" max="10" step="0.2" value="2.0">
+        </div>
+        <button id="search-button" class="primary-button" type="button">Buscar entregadores próximos</button>
+        <p class="hint">ETA ilustrativa: distância em linha reta a 20 km/h.</p>
+        <p id="status" class="status" role="status" aria-live="polite">Carregando dados locais...</p>
+
+        <h2 class="results-title">Resultados <span id="result-count"></span></h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Entregador</th><th>km</th><th>ETA min</th></tr>
+            </thead>
+            <tbody id="results-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="map-panel panel" aria-label="Mapa local da operação">
+        <div class="map-header">
+          <h2>Mapa local da operação</h2>
+          <div class="map-controls" aria-label="Controles do mapa">
+            <button id="zoom-out" type="button" aria-label="Diminuir zoom">−</button>
+            <button id="zoom-in" type="button" aria-label="Aumentar zoom">+</button>
+            <button id="reset-map" type="button">Enquadrar</button>
+          </div>
+        </div>
+        <div id="map-viewport" class="map-viewport">
+          <canvas id="map-canvas" aria-label="Mapa vetorial offline"></canvas>
+          <div id="map-loading" class="map-message">Carregando malha viária local...</div>
+        </div>
+        <p class="map-legend">Vermelho: entregadores no raio ; Cinza: demais ; Dados:  OpenStreetMap</p>
+      </section>
+    </main>
+  </body>
+</html>
