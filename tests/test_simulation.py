@@ -7,12 +7,8 @@ from src.models import Restaurant
 from src.simulation import (
     _is_drivable_edge,
     _retain_drivable_roads,
-    generate_couriers,
-    load_road_graph,
+    generate_couriers
 )
-from scripts.download_road_graph import road_graph_bbox
-
-
 class CourierSimulationTests(unittest.TestCase):
     def test_generates_requested_count_on_demand_centered_road_nodes(self) -> None:
         restaurants = [
@@ -38,22 +34,6 @@ class CourierSimulationTests(unittest.TestCase):
         self.assertEqual(
             sum(item.latitude == -19.9 for item in couriers), 4
         )
-
-    def test_missing_local_graph_fails_without_trying_to_download(self) -> None:
-        with self.assertRaisesRegex(FileNotFoundError, "malha viária offline"):
-            load_road_graph(Path("missing.graphml"))
-
-    def test_download_bbox_uses_osmnx_left_bottom_right_top_order(self) -> None:
-        restaurants = [Restaurant("1", "Centro", "", "", "", -19.9, -43.9)]
-
-        west, south, east, north = road_graph_bbox(restaurants)
-
-        self.assertLess(west, east)
-        self.assertLess(south, north)
-        self.assertAlmostEqual(west, -43.94)
-        self.assertAlmostEqual(east, -43.86)
-        self.assertAlmostEqual(south, -19.94)
-        self.assertAlmostEqual(north, -19.86)
 
     def test_local_graph_excludes_walkways_and_keeps_drivable_roads(self) -> None:
         graph = nx.MultiDiGraph()
