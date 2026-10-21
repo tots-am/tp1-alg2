@@ -1,4 +1,4 @@
-# TP1 ALG1 TOMÁS MOREIRA
+# TP1 ALG2 TOMÁS MOREIRA
 
 App local em Python para simular entregadores em Belo Horizonte e
 encontrar os que estão mais próximos de restaurantes e bares. A interface usa
