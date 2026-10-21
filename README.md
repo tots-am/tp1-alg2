@@ -14,12 +14,6 @@ web externos.
 - CSV original em `data/raw/20261001_atividade_economica.csv`
 - Grafo local em `data/roads/bh.graphml`
 
-## Preparar para uso offline
-
-É necessário ter internet **uma vez, durante a preparação**, para obter a rede
-de ruas do OpenStreetMap. Depois que o CSV processado e o arquivo GraphML
-estiverem preparados, a aplicação não faz requisições de rede.
-
 No PowerShell, dentro da pasta do projeto:
 
 ```powershell
