@@ -87,8 +87,7 @@ data/
   processed/                CSV filtrado e convertido para coordenadas
   roads/                    Grafo GraphML e atribuição do OpenStreetMap
 scripts/
-  prepare_data.py           Gera o CSV processado
-  download_road_graph.py    Baixa o grafo para uso offline
+  convert_to_graphml.py     Usado apenas na conversão não é usado para o código
 tests/                      Testes dos algoritmos e carregamento local
 ```
 
